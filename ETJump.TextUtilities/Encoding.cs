@@ -36,5 +36,29 @@ namespace ETJump.TextUtilities
         {
             return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F');
         }
+
+        /// <summary>
+        /// Encodes extended ASCII to ETJump encoded string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string Encode(string input)
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 0, len = input.Length; i < len; ++i)
+            {
+                if (input[i] <= 127 && input[i] != '=')
+                {
+                    sb.Append(input[i]);
+                }
+                else
+                {
+                    sb.Append(string.Format("={0:X2}", (int) input[i]));
+                }
+            }
+
+            return sb.ToString();
+        }
     }
 }
