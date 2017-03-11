@@ -6,7 +6,6 @@ namespace ETJump.LogParser
     {
         public static void Main(string[] args)
         {
-            
         }
     }
 }
